@@ -4,7 +4,7 @@ import { ToastContainer, } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home';
 import Buycredit from './pages/BuyCedit'
-import Result from './pages/result'
+import Result from './pages/Result';
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Login from './components/Login'
