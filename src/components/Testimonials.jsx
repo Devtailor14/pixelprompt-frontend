@@ -3,6 +3,21 @@ import { assets, testimonialsData } from '../assets/assets'
 import { motion } from 'motion/react'
 
 const Testimonials = () => {
+  
+  // Updated testimonial descriptions
+  const updatedTestimonials = testimonialsData.map((testimonial, index) => {
+    const newDescriptions = [
+      "This platform has completely transformed my workflow! The AI-generated images are incredibly detailed and save me hours of work. The quality is outstanding and the interface is so intuitive to use.",
+      "I've been using this service for months now and I'm amazed by the consistent quality. The variety of styles and the speed of generation make it perfect for my creative projects. Highly recommended!",
+      "As a professional designer, I was skeptical at first, but this tool has exceeded all my expectations. The results are professional-grade and the customer support is excellent. It's become an essential part of my toolkit."
+    ];
+    
+    return {
+      ...testimonial,
+      text: newDescriptions[index] || testimonial.text
+    };
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0.2, y: 100 }}
@@ -19,7 +34,7 @@ const Testimonials = () => {
 
       {/* Testimonials Grid */}
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl w-full'>
-        {testimonialsData.map((testimonial, index) => (
+        {updatedTestimonials.map((testimonial, index) => (
           <motion.div 
             key={index}
             initial={{ opacity: 0, y: 50 }}
@@ -56,7 +71,7 @@ const Testimonials = () => {
             </div>
 
             {/* Testimonial Text */}
-            <p className='text-center sm:text-left text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed'>
+            <p className='text-center sm:text-left text-sm sm:text-sm md:text-base text-gray-600 leading-relaxed'>
               {testimonial.text}
             </p>
           </motion.div>

@@ -40,9 +40,34 @@ const { generateImage } = useContext(AppContext)
       <div className='relative'>
       <img src={image} alt="" className='max-w-sm rounded'/>
       <span className={`absolute bottom-0 left-0 h-1 bg-blue-500 $ {loading ? 'w-full transition-all duration-[10s]': 'w-0'}`}/>
+      
+      {/* Enhanced Loading Overlay */}
+      {loading && (
+        <div className='absolute inset-0 bg-black/50 rounded flex flex-col items-center justify-center'>
+          {/* Spinning Loader */}
+          <div className='w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4'></div>
+          
+          {/* Loading Text with Animation */}
+          <div className='text-white text-lg font-medium mb-2'>
+            Generating...
+          </div>
+          
+          {/* Animated Dots */}
+          <div className='flex space-x-1'>
+            <div className='w-2 h-2 bg-white rounded-full animate-bounce'></div>
+            <div className='w-2 h-2 bg-white rounded-full animate-bounce' style={{animationDelay: '0.1s'}}></div>
+            <div className='w-2 h-2 bg-white rounded-full animate-bounce' style={{animationDelay: '0.2s'}}></div>
+          </div>
+          
+          {/* Progress Text */}
+          <p className='text-white/80 text-sm mt-4 text-center px-4'>
+            Creating your AI masterpiece...
+          </p>
+        </div>
+      )}
       </div>
 
-      <p className={!loading ? 'hidden' : ''}>Loading......</p>
+      <p className={!loading ? 'hidden' : 'text-center mt-4 text-gray-600 font-medium'}>Processing your request...</p>
     </div>
 {!IsImageLoaded &&
     <div className='flex w-full max-w-xl bg-neutral-500 text-white p-0.5 mt-10 rounded-full '>
